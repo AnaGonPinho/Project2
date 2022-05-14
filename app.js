@@ -30,7 +30,7 @@ app.use("/", index);
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 
- const profileRoutes = require("./routes/profile.routes");
+const profileRoutes = require("./routes/profile.routes");
 app.use("/profile", profileRoutes);
 
 const recipesRoutes = require("./routes/recipes.routes");

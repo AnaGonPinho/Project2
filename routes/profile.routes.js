@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const User = require("../models/User.model");
-const Recipe = require("../models/Recipe.model"); 
+const Recipe = require("../models/Recipe.model");  
 
-const isLoggedOut = require("../middleware/isLoggedOut");
+ const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
-//const isLoggedIn = require("../middleware/isLoggedIn");
+ 
 
 //AXIOS GET - EM TODAS AS ROUTES ONDE VAMOS PRECISAR DE NOSA API
 
@@ -21,16 +21,53 @@ router.get("/profile/create", (req, res, next) => {
   });
 
 router.post("/profile/create", (req, res, next) => {
-  res.render("user/profile-create");
+  /* const { title, author, description, rating } = req.body /params?; */
+/*   Recipe.create({ title, author, description, rating })
+  .then(newrecipe => console.log(`New recipe created: ${newrecipe.label}.`))
+  .catch(error => next(error));*/
+  res.render("user/profile-create"); //acho que é user/profile
 });
+
 
 // edit my user
 router.get("/profile/edit-user", (req, res, next) => {
     res.render("user/edit-user");
   });
 
+  /* router.get('/books/:bookId/edit', (req, res, next) => {
+    const { bookId } = req.params;
+   
+    Book.findById(bookId)
+      .then(bookToEdit => {
+        console.log(bookToEdit);
+      })
+      .catch(error => next(error));
+  });
+    */
+
 router.post("/profile/edit-user", (req, res, next) => {
   res.render("user/edit-user");
 }); 
+
+/* router.post('/books/:bookId/edit', (req, res, next) => {
+  const { bookId } = req.params;
+  const { title, description, author, rating } = req.body;
+ 
+  Book.findByIdAndUpdate(bookId, { title, description, author, rating }, { new: true })
+    .then(updatedBook => res.redirect(`/books/${updatedBook.id}`)) // go to the details page to see the updates
+    .catch(error => next(error));
+});
+  */
+
+//DELETE 
+
+/* router.post('/books/:bookId/delete', (req, res, next) => {
+  const { bookId } = req.params;
+ 
+  Book.findByIdAndDelete(bookId)
+    .then(() => res.redirect('/books'))
+    .catch(error => next(error));
+});
+  */
 
 module.exports= router;

@@ -8,4 +8,3 @@ module.exports = (req, res, next) => {
 };
 
 
-module.exports = isLoggedIn;

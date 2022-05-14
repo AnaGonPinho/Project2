@@ -53,7 +53,7 @@ module.exports = (app) => {
   // ℹ️ Middleware that adds a "req.session" information and later to check that you are who you say you are 😅
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || "super hyper secret key",
+      secret: process.env.APP_KEY || "f866dd35e6a8fadd2d2e6b9bc8d5de53",
       resave: false,
       saveUninitialized: false,
       store: MongoStore.create({

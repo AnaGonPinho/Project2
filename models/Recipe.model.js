@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+ const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const recipeSchema = new Schema({
@@ -22,6 +22,10 @@ const recipeSchema = new Schema({
     type: String,
   },
 
+ /*  yield: {
+    type: integer, 
+  }, */
+
   healthLabels: {
     Array: [String],
   },
@@ -38,6 +42,7 @@ const recipeSchema = new Schema({
 
 });
 
-const Recipe = model("Recipe", userSchema);
+const Recipe = model("Recipe", recipeSchema);
 
 module.exports = Recipe;
+ 

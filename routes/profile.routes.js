@@ -1,13 +1,16 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const User = require("../models/User.model");
-const Recipe = require("../models/Recipe.model");
+const Recipe = require("../models/Recipe.model"); 
+
+const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+//const isLoggedIn = require("../middleware/isLoggedIn");
 
 //AXIOS GET - EM TODAS AS ROUTES ONDE VAMOS PRECISAR DE NOSA API
 
 // GET - Show all recipes list
-
+ 
 router.get("/profile", (req, res, next) => {
   res.render("user/profile");
 });
@@ -28,4 +31,6 @@ router.get("/profile/edit-user", (req, res, next) => {
 
 router.post("/profile/edit-user", (req, res, next) => {
   res.render("user/edit-user");
-});
+}); 
+
+module.exports= router;

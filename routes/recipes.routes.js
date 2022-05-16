@@ -14,11 +14,13 @@ router.get("/recipes-list", (req, res, next) => {
   const { ingredients } = req.query
   axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${ingredients}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`)
   .then((response)=> {
-    /* const recipeId = response.data.hits.recipe.uri.split('recipe_')[1]
-    response.data.hits.forEach((recipe) => recipeId ) */
+  /*   let uriSplit=[]
+     uriSplit = response.data.hits.recipe.uri.split('recipe_')[1]
+    
+    response.data.hits.forEach(() =>{ console.log(uriSplit)} ) 
     //
-    //console.log(recipeId)
-    //console.log(response.data.hits)
+    console.log(recipeId)
+    console.log(response.data.hits) */
   res.render("results/recipes-list", {recipesList : response.data.hits}) 
 
   })

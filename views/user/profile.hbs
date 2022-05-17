@@ -1,13 +1,13 @@
 <H1>profile: userinfo + favourite recipes + mycreations</H1>
+<h1>{{user.email}}</h1>
 
-<a href="/profile/create" class="btn btn-primary"><button type="submit">Create recipe</button></a> 
+<a href="/profile/create" class="btn btn-primary"><button type="submit">Create
+    recipe</button></a>
 
-
-<p>{{recipe.label}}</p>
-<img src="{{recipe.image}}" alt="foodImage">
-<p>{{recipe.healthLabels}}</p>
-<p>{{recipe.healthLabels}}</p>
-<p>{{recipe.ingredientLines}}</p>
-<p>{{recipe.preparation}}</p>
-
-
+{{#each user.createdRecipes}}
+  <p>{{label}}</p>
+  <img src="{{image}}" alt="foodImage" />
+  <p>{{healthLabels}}</p>
+  <p>{{ingredientLines}}</p>
+  <p>{{preparation}}</p>
+{{/each}}

@@ -1,4 +1,4 @@
-<form action="/auth/signup" method="POST">
+<form action="/signup" method="POST">
    <label> Email
       <input type="email" name="email">
    </label>
@@ -6,7 +6,8 @@
       <input type="password" name="password">
    </label>
 
-   <button type="submit">Submit</button>
+ <a href="/profile"><button type="submit">Submit</button></a>
+   
 </form>
 
 {{#if errorMessage}}

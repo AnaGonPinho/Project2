@@ -27,11 +27,11 @@ const recipeSchema = new Schema({
   }, */
 
   healthLabels: {
-    Array: [String],
+    type: [String],
   },
 
   ingredientLines: {
-    Array: [String],
+    type: [String],
   },
 
   preparation: {

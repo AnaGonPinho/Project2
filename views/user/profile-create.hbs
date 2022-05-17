@@ -1,1 +1,40 @@
 <h1> create a new recipe on my creations </h1>
+<form action="/profile/create" method="post">
+  <label for="label">Recipe name</label>
+  <input type="text" name="label" id="label" />
+  <label for="preparation ">preparation </label>
+  <textarea
+    name="preparation "
+    id="preparation "
+    cols="100"
+    row="100"
+  ></textarea>
+  <label for="ingredientLines">Ingredients</label>
+  <input type="text" name="ingredientLines" id="ingredientLines" />
+  <label for="healthLabels">Health Labels</label>
+  <select name="healthLabels" id="healthLabels">
+    <option value=""></option>
+    <option value="dairy-free">Dairy Free</option>
+    <option value="gluten-free">Gluten Free</option>
+    <option value="low-sugar">Low Sugar</option>
+    <option value="paleo">Paleo</option>
+    <option value="vegetarian">Vegetarian</option>
+    <option value="vegan">Vegan</option>
+  </select>
+  <label for="occupation ">Upload image - cloudinary </label>
+  <input type="text" name="occupation " id="occupation " />
+  <label for="cuisineType">Cuisine Type</label>
+  <select name="cuisineType" id="cuisineType">
+    <option value=""></option>
+    <option value="American">American</option>
+    <option value="Asian">Asian</option>
+    <option value="French">French</option>
+    <option value="Indian">Indian</option>
+    <option value="Italian">Italian</option>
+    <option value="Mediterranean">Mediterranean</option>
+    <option value="Mexican">Mexican</option>
+    <option value="Chinese">Chinese</option>
+    <option value="Japanese">Japanese</option>
+  </select>
+  <button type="submit">Create</button>
+</form>

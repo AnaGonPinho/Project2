@@ -16,6 +16,7 @@ router.get("/profile", (req, res, next) => {
   console.log(user);
   User.findById(user._id)
     .populate("createdRecipes")
+    .populate("favoriteRecipes")
     .then((user) => {
       res.render("user/profile", { user });
     });

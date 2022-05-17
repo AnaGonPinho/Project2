@@ -19,8 +19,9 @@ const userSchema = new Schema({
 
   favoriteRecipes: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Recipe",
+      name: String,
+      imgUrl: String,
+      uri: String,
     },
   ],
   createdRecipes: [

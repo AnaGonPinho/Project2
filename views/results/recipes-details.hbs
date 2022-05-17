@@ -1,7 +1,7 @@
 <h1>Recipes details</h1>
 
 <p>{{label}}</p>
-<img src="{{image}}" alt="foodImage">
+<img src="{{image}}" alt="foodImage" />
 <p>{{cuisineType}}</p>
 <p>{{source}}</p>
 <p>{{url}}</p>
@@ -11,11 +11,11 @@
 
 <p>{{uri}}</p>
 
-
-      <form action='/profile' method='POST'>
-      <button type='submit' class="favorite-btn"><span class="btn btn-primary"></span>Add to Favorites</button>
-      </form>
-
-
-
- 
+<form action="/recipes-list/add-favorite" method="POST">
+  <input type="text" name="uri" value="{{uri}}" hidden />
+  <input type="text" name="imgUrl" value="{{image}}" hidden />
+  <input type="text" name="name" value="{{label}}" hidden />
+  <button type="submit" class="favorite-btn"><span
+      class="btn btn-primary"
+    ></span>Add to Favorites</button>
+</form>

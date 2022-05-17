@@ -44,66 +44,36 @@ router.get("/recipes-list/:recipeId", (req, res, next) => {
         "______________________________________________",
         response.data.recipe
       );
-      let recipe = response.data.recipe
+      let recipe = response.data.recipe;
       res.render("results/recipes-details", recipe);
     })
     .catch((err) => console.log("Error", err));
 });
 
-router.post('/recipes-list/:recipeId/add-favorite', isLoggedIn, (req,res) => {
-  const userId = req.session.user._id;
-  const theRecipe = req.params.recipeId;
+router.post("/recipes-list/add-favorite", isLoggedIn, (req, res) => {
+  const currentUser = req.session.user._id;
+  let { uri, name, imgUrl } = req.body;
+  console.log(req.body);
 
-User.findByIdAndUpdate(
-  currentUser._id,
-  { $push: { favoriteRecipes: theRecipe } },
-  { new: true }  
+  uri = uri.split("recipe_")[1];
+  User.findByIdAndUpdate(
+    currentUser,
+    { $push: { favoriteRecipes: { name, uri, imgUrl } } },
+    { new: true }
   )
-   .then((updatedUser) => {
-    console.log('THE FAVORITE WAS ADDED');
-    res.redirect('/profile');
-  })
-  .catch((err) =>
-    console.log(
-      'Error while adding a recipe to the favorites list: ',
-      err)
-    )})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
+    .then((updatedUser) => {
+      console.log(updatedUser);
+      req.session.user = updatedUser
+      res.redirect("/profile");
+    })
+    .catch((err) =>
+      console.log("Error while adding a recipe to the favorites list: ", err)
+    );
+});
 
 // ADD FAVORITE
 
- /* router.post('/recipes-list/:recipeId/add-favorite', isLoggedIn, (req,res) => {
+/* router.post('/recipes-list/:recipeId/add-favorite', isLoggedIn, (req,res) => {
   const userId = req.session.user._id;
   const theRecipe = req.params.recipeId;
 
@@ -149,6 +119,5 @@ User.findByIdAndUpdate(
       console.log('Error while editing the favorite recipe list: ', err)
     );
 });      */
-  
 
 module.exports = router;

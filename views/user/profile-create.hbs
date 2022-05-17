@@ -1,17 +1,12 @@
 <h1> create a new recipe on my creations </h1>
 
-<form action="/profile/create" method="post">
+<form action="/profile/create" method="post" enctype="multipart/form-data">
 
   <label for="label">Recipe name</label>
   <input type="text" name="label" id="label" />
 
   <label for="preparation ">preparation </label>
-  <textarea
-    name="preparation"
-    id="preparation"
-    cols="100"
-    row="100"
-  ></textarea>
+  <textarea name="preparation" id="preparation" cols="100" row="100"></textarea>
 
   <label for="ingredientLines">Ingredients</label>
   <input type="text" name="ingredientLines" id="ingredientLines" />

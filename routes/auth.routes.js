@@ -33,6 +33,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     });
   }
 
+  /*
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
   if (!regex.test(password)) {
@@ -41,7 +42,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
     });
   }
-
+*/
   // Search the database for a user with the username submitted in the form
   User.findOne({ username }).then((found) => {
     // If the user is found, send the message username is taken

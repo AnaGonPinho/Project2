@@ -1,1 +1,31 @@
-<h1>edit my creations</h1>
+
+
+<h1>Edit the Recipe: {{recipe.label}}</h1>
+ 
+<form action="/profile/:recipeId/edit" method="post">
+  <label> Name:
+    <input type="text" name="label" value="{{recipe.label}}" />
+  </label>
+ 
+  <label> Ingredients
+    <input type="text" name="ingredientLines" value="{{recipe.ingredientLines}}" />
+  </label>
+ 
+  <label> Health Labels
+    <input type="text" name="preparation" value="{{recipe.healthLabels}}" /> 
+  </label>
+
+  
+   <label> Preparation
+    <textarea name="preparation" cols="30" rows="4">{{recipe.preparation}}</textarea>
+  </label>
+ 
+  <label> Cuisine Type
+    <input type="text" name="cuisineType" value="{{recipe.cuisineType}}" />
+  </label>
+
+  
+  <button>Save changes</button>
+</form>
+
+

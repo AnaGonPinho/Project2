@@ -5,6 +5,8 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const Recipe = require("../models/Recipe.model");
 const axios = require("axios");
+const isLoggedIn = require("../middleware/isLoggedIn");
+const User = require("../models/User.model");
 
 //Display a list of recipes depending on the search
 
@@ -42,11 +44,80 @@ router.get("/recipes-list/:recipeId", (req, res, next) => {
         "______________________________________________",
         response.data.recipe
       );
-      let recipe = response.data.recipe
+      let recipe = response.data.recipe;
       res.render("results/recipes-details", recipe);
     })
     .catch((err) => console.log("Error", err));
 });
 
+router.post("/recipes-list/add-favorite", isLoggedIn, (req, res) => {
+  const currentUser = req.session.user._id;
+  let { uri, name, imgUrl } = req.body;
+  console.log(req.body);
+
+  uri = uri.split("recipe_")[1];
+  User.findByIdAndUpdate(
+    currentUser,
+    { $push: { favoriteRecipes: { name, uri, imgUrl } } },
+    { new: true }
+  )
+    .then((updatedUser) => {
+      console.log(updatedUser);
+      req.session.user = updatedUser
+      res.redirect("/profile");
+    })
+    .catch((err) =>
+      console.log("Error while adding a recipe to the favorites list: ", err)
+    );
+});
+
+// ADD FAVORITE
+
+/* router.post('/recipes-list/:recipeId/add-favorite', isLoggedIn, (req,res) => {
+  const userId = req.session.user._id;
+  const theRecipe = req.params.recipeId;
+
+  User.findById(userId)
+  .then((curentUser) => {
+    const currentFavorites = currentUser.favoriteRecipes;
+
+    if (currentFavorites.includes(theRecipe)){
+      return User.findByIdAndUpdate(
+        currentUser._id,
+        {$pull: {favoriteRecipes: theRecipe}},
+        { new: true } 
+      )
+      .then((updatedUser) => {
+        console.log('THE FAVORITE WAS REMOVED');
+        res.redirect('/profile');
+      })
+      .catch((err) =>
+            console.log(
+              'Error while removing a recipe from the favorites list: ',
+              err
+              )
+              );
+        } else {
+        return User.findByIdAndUpdate(
+          currentUser._id,
+          { $push: { favoriteRecipes: theRecipe } },
+          { new: true }  
+          )
+           .then((updatedUser) => {
+            console.log('THE FAVORITE WAS ADDED');
+            res.redirect('/profile');
+          })
+          .catch((err) =>
+            console.log(
+              'Error while adding a recipe to the favorites list: ',
+              err
+            )
+          );
+      }
+    })
+    .catch((err) =>
+      console.log('Error while editing the favorite recipe list: ', err)
+    );
+});      */
 
 module.exports = router;

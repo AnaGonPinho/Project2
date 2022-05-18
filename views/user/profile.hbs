@@ -9,5 +9,12 @@
   <img src="{{image}}" alt="foodImage" />
   <p>{{healthLabels}}</p>
   <p>{{ingredientLines}}</p>
+  <p>{{cuisineType}}</p>
   <p>{{preparation}}</p>
+{{/each}}
+
+{{#each user.favoriteRecipes}}
+  <p>{{name}}</p>
+  <img src="{{imgUrl}}" alt="foodImage" />
+  <a href="/recipes-list/{{uri}}">{{name}}</a>
 {{/each}}

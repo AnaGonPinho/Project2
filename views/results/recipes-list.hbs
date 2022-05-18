@@ -1,23 +1,21 @@
 <h1>Recipes</h1>
 
 {{#each recipesList}}
-<p>{{recipe.label}}</p>
-<img src="{{recipe.image}}" alt="foodImage">
-<p>{{recipe.cuisineType}}</p>
-<p>{{recipe.ingredients.length}}</p>
+  <p>{{recipe.label}}</p>
+  <img src="{{recipe.image}}" alt="foodImage" />
+  <p>{{recipe.cuisineType}}</p>
+  <p>{{recipe.ingredients.length}}</p>
 
-{{!-- {{#each }}
+  {{!-- {{#each }}
 <p>{{this.recipes.healthLabels}}</p>
 {{/each}} --}}
 
-
- <button><a href="/recipes-list/{{id}}" class="btn btn-primary">View Details</a></button>
+  <button><a href="/recipes-list/{{id}}" class="btn btn-primary">View Details</a></button>
 {{/each}}
 
- 
-{{!--  router.get("/recipes-list/:recipeId", (req, res, next) => {
+{{!  router.get("/recipes-list/:recipeId", (req, res, next) => {
    //const {recipeId} = req.params;
    console.log(req.params.recipeId)
    res.render("results/recipes-details")
  })
-  --}}
+  }}

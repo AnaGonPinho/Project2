@@ -1,12 +1,55 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 14px; 
+  font-family: 'Quicksand', sans-serif;
 }
-
 a {
   color: #00b7ff;
 }
 
-h1 {
+/* h1 {
   color: 15px;
+} */
+
+
+.titleandsearch{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+.title-home{
+  font-size: 60px;
+  padding: 20px;
+
+}
+
+.homepage-view{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+body{
+  background-image:url('/images/stawberrys-home.png') ;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
+
+
+#search-bar{
+  padding: 15px; 
+  width: 500px;
+}
+
+.button-home{
+
+  background-color: rgb(201, 72, 72);
+  padding: 15px;
+  color: antiquewhite;
+  border-color:  rgb(201, 72, 72) ;
+  font-size: 15px;
+
 }

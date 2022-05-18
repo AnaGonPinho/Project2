@@ -18,6 +18,9 @@ const app = express();
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
+// Register the location for handlebars partials here:
+hbs.registerPartials(__dirname + "/views/partials");
+
 const capitalized = require("./utils/capitalized");
 const projectName = "Project2";
 

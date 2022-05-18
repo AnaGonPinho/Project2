@@ -13,7 +13,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/profile", (req, res, next) => {
   const user = req.session.user;
-  console.log(user);
+  //console.log(user);
   User.findById(user._id)
     .populate("createdRecipes")
     .populate("favoriteRecipes")
@@ -68,23 +68,84 @@ router.get("/profile/:recipeId/edit", (req, res, next) => {
 
 router.post("/profile/:recipeId/edit", (req, res, next) => {
   const { recipeId } = req.params;
+  const { label, ingredientLines, healthLabels, preparation } =req.body;
   Recipe.findByIdAndUpdate(
     recipeId,
-    { label, image, healthLabels, ingredientLines, preparation },
+    { label, ingredientLines, healthLabels, preparation},
     { new: true }
   )
-    .then((updatedRecipe) => res.redirect(`/profile/${updatedRecipe.id}`))
+    .then((updatedRecipe) => res.redirect(`/profile`))
     .catch((error) => next(error));
 });
-//Delete my Recipe
+ 
+router.post("/profile/:recipeId/remove-favorite", (req, res, next) => {
+  const userId = req.session.user._id
+  const theRecipe = req.params.recipeId;
 
-router.post("/profile/:recipeId/delete", (req, res, next) => {
-  const { recipeId } = req.params;
+  User.findById(userId)
+  .then((currentUser) => {
+    const updated = []
+    currentUser.favoriteRecipes.forEach((item) => {
+      if(item._id != theRecipe) {
+        updated.push(item)
+      }
+    })
+    return updated
+  })
+  .then((updatedRecipes) => {
+    return User.findByIdAndUpdate(userId, {favoriteRecipes: updatedRecipes}, {new:true})
+  })
+  .then((updatedUser) => {
+    console.log(updatedUser)
+    res.redirect("/profile")
+  })
+  .catch(err => console.log(err))
+})
 
-  Recipe.findByIdAndDelete(recipeId)
-    .then(() => res.redirect("/profile"))
-    .catch((error) => next(error));
-});
+
+router.post("/profile/:recipeId/remove-created", (req, res, next) => {
+  const userId = req.session.user._id
+  const theRecipe = req.params.recipeId;
+
+  Recipe.findByIdAndDelete(theRecipe)
+  .then((deletedRecipe) => {
+    return User.findByIdAndUpdate(userId, {$pull: {createdRecipes: theRecipe}}, {new:true})  
+  })
+  .then((updatedUser) => {
+    res.redirect("/profile")
+  })
+  .catch(err => console.log(err))
+})
+
+module.exports = router;
+
+
+// router.post("/profile/:recipeId/delete", (req, res, next) => {
+//   const userId = req.session.user._id;
+//   const theRecipe = req.params.recipeId;
+// console.log(userId,theRecipe)
+//   /* User.findById(userId).then((currentUser) => {
+//     const currentFavorites = currentUser.favoriteRecipes;
+//  */
+//    /*  if (currentFavorites.includes(theRecipe)) {
+//       return */ User.findByIdAndUpdate(
+//         userId,
+//         { $pull: { favoriteRecipes: theRecipe } },
+//         { new: true }
+//       )
+//         .then((updatedUser) => {
+//           console.log("THE FAVORITE RECIPE WAS REMOVED", updatedUser);
+//           res.redirect("/profile");
+//         })
+//         .catch((err) =>
+//           console.log(
+//             "Error while removing a recipe from the favorites list: ",
+//             err
+//           )
+//         );
+//    /*  } */
+//   });
+/* });
 
 // edit my user
 router.get("/profile/edit-user", (req, res, next) => {
@@ -95,4 +156,20 @@ router.post("/profile/edit-user", (req, res, next) => {
   res.render("user/edit-user");
 });
 
-module.exports = router;
+//Delete my Recipe
+
+/* router.post("/profile/:recipeId/delete", (req, res, next) => {
+  const { recipeId } = req.params;
+
+  Recipe.findOneAndRemove({ label: req.params.label })
+    .then(() => res.redirect("/profile"))
+    .catch((error) => next(error));
+}); */
+
+/* router.post('/profile/:recipeId/delete', (req, res, next) => {
+  const { recipeId } = req.params;
+ 
+  Recipe.findByIdAndDelete(recipeId)
+    .then(() => res.redirect('/profile'))
+    .catch(error => next(error));
+}); */

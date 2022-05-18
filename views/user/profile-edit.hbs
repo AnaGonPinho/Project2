@@ -1,7 +1,7 @@
 
 <h1>Edit the Recipe: {{recipe.label}}</h1>
  
-<form action="/profile/:recipeId/edit" method="post">
+<form action="/profile/{{recipe._id}}/edit" method="post">
   <label> Name:
     <input type="text" name="label" value="{{recipe.label}}" />
   </label>
@@ -11,7 +11,7 @@
   </label>
  
   <label> Health Labels
-    <input type="text" name="preparation" value="{{recipe.healthLabels}}" /> 
+    <input type="text" name="healthLabels" value="{{recipe.healthLabels}}" /> 
   </label>
 
   
@@ -24,7 +24,6 @@
   </label>
 
   
-  <button>Save changes</button>
+  <button type="submit">Save changes</button>
 </form>
-
 

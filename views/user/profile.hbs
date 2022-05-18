@@ -11,10 +11,23 @@
   <p>{{ingredientLines}}</p>
   <p>{{cuisineType}}</p>
   <p>{{preparation}}</p>
+   {{!-- add the form to handle the POST request to remove a specific book  --}}
+      <a href="/profile/{{_id}}/edit"><button>Edit</button></a>
+  
+    <form action="/profile/{{_id}}/remove-created" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+  </div>
 {{/each}}
 
 {{#each user.favoriteRecipes}}
   <p>{{name}}</p>
   <img src="{{imgUrl}}" alt="foodImage" />
   <a href="/recipes-list/{{uri}}">{{name}}</a>
+   
+  
+   <form action="/profile/{{_id}}/remove-favorite" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+  </div>
 {{/each}}

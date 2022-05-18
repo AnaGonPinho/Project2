@@ -71,6 +71,21 @@ router.post("/recipes-list/add-favorite", isLoggedIn, (req, res) => {
     );
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ADD FAVORITE
 
 /* router.post('/recipes-list/:recipeId/add-favorite', isLoggedIn, (req,res) => {

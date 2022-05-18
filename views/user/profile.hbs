@@ -1,15 +1,21 @@
-<H1>profile: userinfo + favourite recipes + mycreations</H1>
-<h1>{{user.email}}</h1>
 
-<a href="/profile/create" class="btn btn-primary"><button type="submit">Create
+<H1>Welcome to your cookbook!</H1>
+
+
+<hr>
+
+<section id="create-recipe">
+<h5>Let's create a recipe?</h5><a href="/profile/create" class="btn btn-primary"><button type="submit">Create
     recipe</button></a>
 
+
+<section id="my-created-recipes"
 {{#each user.createdRecipes}}
-  <p>{{label}}</p>
-  <img src="{{image}}" alt="foodImage" />
-  <p>{{healthLabels}}</p>
-  <p>{{ingredientLines}}</p>
-  <p>{{cuisineType}}</p>
+  <p>{{user.label}}</p>
+  <img src="{{image}}" width="300px" height="300px"alt="foodImage" />
+  <p>{{user.healthLabels}}</p>
+  <p>{{user.ingredientLines.length}}</p>
+  <p>{{user.cuisineType}}</p>
   <p>{{preparation}}</p>
    {{!-- add the form to handle the POST request to remove a specific book  --}}
       <a href="/profile/{{_id}}/edit"><button>Edit</button></a>
@@ -19,10 +25,15 @@
     </form>
   </div>
 {{/each}}
+</section>
+
+
+<section id="favourite-recipes">
+  <h5>Here are your favourite recipes</h5>
 
 {{#each user.favoriteRecipes}}
   <p>{{name}}</p>
-  <img src="{{imgUrl}}" alt="foodImage" />
+  <img src="{{imgUrl}}" width="300px" height="300px" alt="foodImage" />
   <a href="/recipes-list/{{uri}}">{{name}}</a>
    
   
@@ -31,3 +42,36 @@
     </form>
   </div>
 {{/each}}
+
+</section>
+
+
+{{!-- 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-sm">
+      <div class="sticky-items">
+     
+            <label for="ingredientsLine">Ingredients</label>
+            <input type="text" name="name" class="form-control" id="ingredientsLine">
+        </div>
+       
+       
+     
+       
+        </div>
+    </div>
+    <div class="col-lg-9 col-sm">
+      <div class="container">
+        <div class="row gy-5">
+          {{#each user.createdRecipes}}
+          <div class="col-sm col-lg-4">
+            {{> profilecard this}}
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+ --}}

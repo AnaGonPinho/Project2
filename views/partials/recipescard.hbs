@@ -1,0 +1,15 @@
+<div class="listing-card">
+
+  <div class="card-info">
+    <img src="{{this.recipe.image}}" alt="food" />
+    <h3>{{this.recipe.label}}</h3>
+    <p><em>Cuisine Type:</em>
+      {{#each this.recipe.cuisineType}}
+        {{this}}
+      {{/each}}
+    </p>
+
+    <p><em>Number of ingredients:</em> {{this.recipe.ingredients.length}}</p>
+    <a href="/recipes-list/{{this.id}}">View Details</a>
+  </div>
+</div>

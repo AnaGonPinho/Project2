@@ -1,21 +1,43 @@
 <h1>Recipes</h1>
-
+{{!-- 
 {{#each recipesList}}
   <p>{{recipe.label}}</p>
   <img src="{{recipe.image}}" alt="foodImage" />
   <p>{{recipe.cuisineType}}</p>
   <p>{{recipe.ingredients.length}}</p>
 
-  {{!-- {{#each }}
-<p>{{this.recipes.healthLabels}}</p>
-{{/each}} --}}
-
   <button><a href="/recipes-list/{{id}}" class="btn btn-primary">View Details</a></button>
 {{/each}}
+ --}}
 
-{{!  router.get("/recipes-list/:recipeId", (req, res, next) => {
-   //const {recipeId} = req.params;
-   console.log(req.params.recipeId)
-   res.render("results/recipes-details")
- })
-  }}
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-sm">
+      <div class="sticky-items">
+      <form action='/recipes-list' method='POST' class="search-listing-form">
+        <div class="form-group">
+            <label for="ingredientsLine">Ingredients</label>
+            <input type="text" name="name" class="form-control" id="ingredientsLine">
+        </div>
+       
+       
+        <button type="submit" class="btn btn-primary btn-block">Search</button>
+        </form>
+       
+        </div>
+    </div>
+    <div class="col-lg-9 col-sm">
+      <div class="container">
+        <div class="row gy-5">
+          {{#each recipesList}}
+          <div class="col-sm col-lg-4">
+            {{> recipescard this}}
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

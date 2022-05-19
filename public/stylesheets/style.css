@@ -1,10 +1,10 @@
 body {
   padding: 50px;
-  font-size: 14px; 
+  font-size: 14px;
 }
 
-*{
-  font-family: 'Quicksand', sans-serif;
+* {
+  font-family: "Quicksand", sans-serif;
 }
 a {
   color: #00b7ff;
@@ -14,56 +14,49 @@ a {
   color: 15px;
 } */
 
-
-.titleandsearch{
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+.titleandsearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.title-home{
+.title-home {
   font-size: 60px;
   padding: 20px;
-
-
 }
 
-
-.description-home{
+.description-home {
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
-.homepage-view{
+.homepage-view {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-body{
-  background-image:url('/images/stawberrys-home.png') ;
+body {
+  background-image: url("/images/stawberrys-home.png");
   background-repeat: no-repeat;
   background-position: 100%;
 }
 
-
-#search-bar{
-  padding: 15px; 
+#search-bar {
+  padding: 15px;
   width: 500px;
 }
 
-.button-home{
-
+.button-home {
   background-color: rgb(201, 72, 72);
   padding: 17px;
   color: antiquewhite;
-  border-color:  rgb(201, 72, 72) ;
+  border-color: rgb(201, 72, 72);
   font-size: 15px;
-  border-radius: 5% ;
-
+  border-radius: 5%;
 }
 
 footer {

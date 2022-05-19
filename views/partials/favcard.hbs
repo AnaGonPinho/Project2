@@ -3,12 +3,12 @@
   <div class="card-body">
     <h5 class="card-title">{{name}}</h5>
     <p class="card-text">
-      <p><em>Cuisine Type:</em>
+      {{!-- <p><em>Cuisine Type:</em> --}}
         {{#each this.recipe.cuisineType}}
           {{this}}
         {{/each}}
       </p></p>
-    <p><em>Number of ingredients:</em> {{this.recipe.ingredients.length}}</p>
+    {{!-- <p><em>Number of ingredients:</em> {{this.recipe.ingredients.length}}</p> --}}
     <a href="/recipes-list/{{uri}}">View Details</a>
     <form action="/profile/{{_id}}/remove-favorite" method="POST">
       <button type="submit">Delete</button>

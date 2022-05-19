@@ -2,15 +2,21 @@
     <link rel="stylesheet" href="/stylesheets/pages.css" /> 
 </head>
 
-<section class="Your recipes created">
-<h1 class="recipes-created">Your recipes created:</h1>
- <div class="container main-created">
 
 <h5>Let's create a recipe?</h5>
-<a href="/profile/create" class="btn btn-primary"><button type="submit">Create
+<br>
+<a href="/profile/create" {{!-- class="btn btn-primary" --}}><button type="submit">Create
     recipe</button></a>
 </div>
-    
+<br>
+<br>
+
+  <section class="Your recipes created">
+<h1 class="recipes-created">Your created recipes</h1>
+ <div class="container main-created">
+   <br>
+   <br>
+  
       <div class="recipe-listing">
           {{#each user.createdRecipes}}
             {{> createdcard this}}
@@ -19,11 +25,13 @@
    
 </section>
 
-
+<br>
+<br>
 <section class="Your favourite recipes ">
 <h1 class="recipes-fav">Your favourite recipes:</h1>
  <div class="container main-created">
-<h5>Your favourite recipes</h5>
+   <br>
+
 </div>
         <div class="recipe-listing">
           {{#each user.favoriteRecipes}}

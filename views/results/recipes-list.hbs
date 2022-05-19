@@ -16,7 +16,7 @@
   <div class="row">
     <div class="col-lg-3 col-sm">
       <div class="sticky-items">
-      <form action='/recipes-list' method='GET' class="search-listing-form">
+      <form action='/recipes-list' method='POST' class="search-listing-form">
         <div class="form-group">
             <label for="ingredientsLine">Ingredients</label>
             <input type="text" name="name" class="form-control" id="ingredientsLine">
@@ -30,7 +30,7 @@
     </div>
     <div class="col-lg-9 col-sm">
       <div class="container">
-        <div class="row gy-5">
+        <div class="row gx-5">
           {{#each recipesList}}
           <div class="col-sm col-lg-4">
             {{> recipescard this}}
@@ -41,3 +41,7 @@
     </div>
   </div>
   </div>
+
+
+
+

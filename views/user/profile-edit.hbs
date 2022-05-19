@@ -1,29 +1,37 @@
+<div class="background-image">
+<h1>Let's edit the Recipe: {{recipe.label}}</h1>
 
-<h1>Edit the Recipe: {{recipe.label}}</h1>
+<section class="form-edit">
  
 <form action="/profile/{{recipe._id}}/edit" method="post">
   <label>Name:
     <input type="text" name="label" value="{{recipe.label}}" />
   </label>
+  <br>
+  <br>
  
   <label> Ingredients
-    <input type="text" name="ingredientLines" value="{{recipe.ingredientLines}}" />
-  </label>
+    <textarea type="text" name="ingredientLines" cols="30" rows="4">{{recipe.ingredientLines}}</textarea>
+  
+  <br>
+  <br>
  
   <label> Health Labels
     <input type="text" name="healthLabels" value="{{recipe.healthLabels}}" /> 
   </label>
+  <br>
+  <br>
 
   
    <label> Preparation
     <textarea name="preparation" cols="30" rows="4">{{recipe.preparation}}</textarea>
   </label>
+  <br>
+  <br>
  
-  {{!-- <label> Cuisine Type
-    <input type="text" name="cuisineType" value="{{recipe.cuisineType}}" />
-  </label> --}}
-
+</section>
   
   <button type="submit">Save changes</button>
 </form>
+</div>
 

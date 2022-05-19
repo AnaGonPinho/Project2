@@ -1,18 +1,24 @@
+<div class="background-image">
 <h1> Let's create a new recipe 👨‍🍳 </h1>
 <br>
-
+<section class="form-create">
 <form action="/profile/create" method="post" enctype="multipart/form-data">
 
   <label for="label">Recipe name</label>
   <input type="text" name="label" id="label" />
   <br>
+  <br>
+  
+
 
   <label for="preparation ">Preparation </label>
   <textarea name="preparation" id="preparation" cols="100" row="100"></textarea>
   <br>
+  <br>
 
   <label for="ingredientLines">Ingredients</label>
   <input type="text" name="ingredientLines" id="ingredientLines" />
+  <br>
   <br>
 
   <label for="healthLabels">Health Labels</label>
@@ -26,6 +32,7 @@
     <option value="vegan">Vegan</option>
 
   </select>
+  <br>
   <br>
 
   <label for="cuisineType">Cuisine Type</label>
@@ -44,10 +51,17 @@
 
   </select>
   <br>
+  <br>
+    </section>
   <label>Image:
     <input type="file" name="recipe-cover-image" class="form-control-file" />
   </label>
   <br>
+  <br>
+
+
 
   <button type="submit">Create</button>
 </form>
+
+</div>

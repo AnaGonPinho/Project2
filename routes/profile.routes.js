@@ -31,13 +31,20 @@ router.post(
   "/profile/create",
   fileUploader.single("recipe-cover-image"),
   (req, res, next) => {
-    const { label, image, healthLabels, ingredientLines, preparation } =
-      req.body;
+    const {
+      label,
+      image,
+      cuisineType,
+      healthLabels,
+      ingredientLines,
+      preparation,
+    } = req.body;
 
     console.log(req.body);
     Recipe.create({
       label,
       image: req.file.path,
+      cuisineType,
       healthLabels,
       ingredientLines,
       preparation,
@@ -68,10 +75,11 @@ router.get("/profile/:recipeId/edit", (req, res, next) => {
 
 router.post("/profile/:recipeId/edit", (req, res, next) => {
   const { recipeId } = req.params;
-  const { label, ingredientLines, healthLabels, preparation } = req.body;
+  const { label, cuisineType, ingredientLines, healthLabels, preparation } =
+    req.body;
   Recipe.findByIdAndUpdate(
     recipeId,
-    { label, ingredientLines, healthLabels, preparation },
+    { label, cuisineType, ingredientLines, healthLabels, preparation },
     { new: true }
   )
     .then((updatedRecipe) => res.redirect(`/profile`))
@@ -125,57 +133,3 @@ router.post("/profile/:recipeId/remove-created", (req, res, next) => {
 });
 
 module.exports = router;
-
-// router.post("/profile/:recipeId/delete", (req, res, next) => {
-//   const userId = req.session.user._id;
-//   const theRecipe = req.params.recipeId;
-// console.log(userId,theRecipe)
-//   /* User.findById(userId).then((currentUser) => {
-//     const currentFavorites = currentUser.favoriteRecipes;
-//  */
-//    /*  if (currentFavorites.includes(theRecipe)) {
-//       return */ User.findByIdAndUpdate(
-//         userId,
-//         { $pull: { favoriteRecipes: theRecipe } },
-//         { new: true }
-//       )
-//         .then((updatedUser) => {
-//           console.log("THE FAVORITE RECIPE WAS REMOVED", updatedUser);
-//           res.redirect("/profile");
-//         })
-//         .catch((err) =>
-//           console.log(
-//             "Error while removing a recipe from the favorites list: ",
-//             err
-//           )
-//         );
-//    /*  } */
-//   });
-/* });
-
-// edit my user
-router.get("/profile/edit-user", (req, res, next) => {
-  res.render("user/edit-user");
-});
-
-router.post("/profile/edit-user", (req, res, next) => {
-  res.render("user/edit-user");
-});
-
-//Delete my Recipe
-
-/* router.post("/profile/:recipeId/delete", (req, res, next) => {
-  const { recipeId } = req.params;
-
-  Recipe.findOneAndRemove({ label: req.params.label })
-    .then(() => res.redirect("/profile"))
-    .catch((error) => next(error));
-}); */
-
-/* router.post('/profile/:recipeId/delete', (req, res, next) => {
-  const { recipeId } = req.params;
- 
-  Recipe.findByIdAndDelete(recipeId)
-    .then(() => res.redirect('/profile'))
-    .catch(error => next(error));
-}); */

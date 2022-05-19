@@ -8,7 +8,7 @@
 
 - Second 500 - As a user I want to see a nice error page when the team screws it up so that I know that is not my fault.
 
-- Third Homepage - As a user I want to be able to access the homepage with a brief description and a search bar to type the ingredients, to store the typed ingredients below the search bar, log in and sign up. Bonus: social authentication. Bonus: As a user, i want to filter my type of diet (Paleo, vegan, etc).
+- Third Homepage - As a user I want to be able to access the homepage with a brief description and a search bar to type the ingredients, log in and sign up. 
 
 - Fourth Sign up - As a user I want to sign up on the web page so that I can add favourite recipes and most used ingredients to my list.
 
@@ -21,76 +21,116 @@
 
 - Eigth Profile create - I want to be able to create new “my creations recipes” and edit them.
 
-- Nineth Edit user - As a user I want to be able to edit and delete my profile.
 
-- Tenth Result - As a user I want to see the list of recipes which includes the ingredients that I added.
+- Nineth Result - As a user I want to see the list of recipes which includes the ingredients that I added.
 
-- Eleventh Recipe listing- As a user I want to see more details of the recipe with the link for the website that explains the preparation. I also want to be able to save that recipe as a favourite.
+- Tenth Recipe listing- As a user I want to see more details of the recipe with the link for the website that explains the preparation. I also want to be able to save that recipe as a favourite.
 
-Method|Route|Description|Request-Body
-GET | / | Main page route. Renders home index view.
+Method|Route|Description|Request-Body |
+GET | / | Main page route. Renders home index view. |
 
-GET | /login |Renders login form view.
+GET | /login |Renders login form view. |
 
-POST | /login | Sends Login form data to the server. |{ email, password }
+POST | /login | Sends Login form data to the server. |{ email, password } |
 
-GET |/signup |Renders signup form view.
+GET |/signup |Renders signup form view. |
 
-POST| /signup | Sends Sign Up info to the server and creates user in the DB |{ email, password }
+POST| /signup | Sends Sign Up info to the server and creates user in the DB |{ email, password } |
 
-GET |/profile/edit-user |Private route. Renders edit-user form view.
+GET|/profile/ |Private route. Render 2 sections: favorites + myCreations |
 
-PUT | /profile/edit-user |Private route. Sends edit-user info to server and updates user in DB. |{ email, password, [firstName], [lastName], [imageUrl] }
+DELETE |/profile/:recipeId |Private route. Deletes the existing favorite from the current user. |
 
-DELETE|/profile/edit-user| Private route. Deletes user in DB.
+POST |/profile/create |Private route. Create a new recipe | {recipeName, ingredient, description} |
 
-GET|/profile/ |Private route. Render 3 sections: favorites + myCreations+ user information view.
+DELETE|/profile/:myCreations/delete |Private route. Delete a recipe in the user myCreations section |
 
-DELETE |/profile/:recipeId |Private route. Deletes the existing favorite from the current user.
+Post | /profile/:myCreations/edit | Private route. Edit a recipe in the user myCreations section |{ label, ingredientLines, healthLabels, preparation } |
 
-POST/PUT? |/profile/create |Private route. Create a new recipe only available for the user. | {recipeName, ingredient, description}
+GET|/recipes-list |Renders recipes-list view. |
 
-DELETE|/profile/:myCreations/delete |Private route. Delete a recipe in the user myCreations section
+GET|/recipes/details/:recipeId |Renders recipes-details view for the particular recipe. |
 
-Post | /profile/:myCreations/edit|Private route. Edit a recipe in the user myCreations section |{recipeName, ingredient, description}
-
-GET|/recipes-list |Renders recipes-list view.
-
-GET|/recipes/details/:recipeId |Renders recipes-details view for the particular recipe.
-
-POST |/recipes/detailsId/:recipeId/add-favorite | Private route. Adds a new favorite for the current user.?
+POST |/recipes/detailsId/:recipeId/add-favorite | Private route. Adds a new favorite for the current user.|
 
 ## Models
 
 ### User model
 
 **user**
-{
-name: {type: String}
-email: { type: String, required: true },
-password: { type: String, required: true },
-favoriteRecipes [{ type: Schema.Types.ObjectId, ref: Recipes}],
 
-}
+const userSchema = new Schema({
+  name: {
+    type: String,
+     unique: true 
 
-**Recipes Details** ??????? Recipes + search?
+  email: {
+    type: String,
+    required: true,
+  },
 
-{
-id:
-Type?
-name: {type: String},
-App\_ id?
-ingredients: [ingredientsID]
-Description: {type: String}
-Image:
+  password: {
+    type: String,
+    required: true,
+  },
 
-}
+  favoriteRecipes: [
+    {
+      name: String,
+      imgUrl: String,
+      uri: String,
+    },
+  ],
+  createdRecipes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Recipe",
+    },
+  ],
+});
 
-**Mycreations model**
+const User = model("User", userSchema);
 
-{
-recipeId:
-RecipeName,
-Ingredient,
-description}
-}
+**Recipe Model**
+
+const recipeSchema = new Schema({
+  label: {
+    type: String,
+    required: true,
+    // unique: true -> Ideally, should be unique, but its up to you
+  },
+  image: {
+    type: String,
+    required: true,
+    default:
+      " https://cdn.xxl.thumbs.canstockphoto.com.br/garfo-armando-lugar-faca-prato-vazio-%C3%ADcone-desenho_csp67400895.jphttps://www.kindpng.com/picc/m/29-299742_rice-bowl-filled-icon-vector-rice-bowl-icon.png",
+  },
+
+  source: {
+    type: String,
+  },
+
+  url: {
+    type: String,
+  },
+
+  /*  yield: {
+    type: integer, 
+  }, */
+
+  healthLabels: {
+    type: [String],
+  },
+
+  ingredientLines: {
+    type: [String],
+  },
+
+  preparation: {
+    type: String,
+  },
+});
+
+const Recipe = model("Recipe", recipeSchema);
+
+

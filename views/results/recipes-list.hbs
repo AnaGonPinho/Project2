@@ -1,20 +1,9 @@
+
 <h1>Recipes</h1>
-{{!-- 
-{{#each recipesList}}
-  <p>{{recipe.label}}</p>
-  <img src="{{recipe.image}}" alt="foodImage" />
-  <p>{{recipe.cuisineType}}</p>
-  <p>{{recipe.ingredients.length}}</p>
 
-  <button><a href="/recipes-list/{{id}}" class="btn btn-primary">View Details</a></button>
-{{/each}}
- --}}
-
-
-
-<div class="container">
+ <div class="container main-recipes">
   <div class="row">
-    <div class="col-lg-3 col-sm">
+    <div class="col">
       <div class="sticky-items">
       <form action='/recipes-list' method='POST' class="search-listing-form">
         <div class="form-group">
@@ -28,20 +17,13 @@
        
         </div>
     </div>
-    <div class="col-lg-9 col-sm">
-      <div class="container">
-        <div class="row gx-5">
+    <div class="col-9">
+      <div class="recipe-listing">
           {{#each recipesList}}
-          <div class="col-sm col-lg-4">
             {{> recipescard this}}
-          </div>
           {{/each}}
-        </div>
       </div>
     </div>
   </div>
-  </div>
 
-
-
-
+</div>

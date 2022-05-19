@@ -1,6 +1,11 @@
 body {
   padding: 50px;
   font-size: 14px; 
+ 
+}
+
+main{ 
+  min-height: 70vh;
 }
 
 *{
@@ -87,3 +92,13 @@ footer {
 /* .recipes-details-image{
  margin-left: 25%;
 } */
+
+.recipe-listing {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+}
+.recipe-card {
+  max-width: 300px;
+  background-color: white;
+}

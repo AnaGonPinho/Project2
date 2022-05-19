@@ -1,14 +1,13 @@
-<div class="listing-card">
-
-  <div class="card-info">
-    <img src="{{this.recipe.image}}" alt="food" />
-    <h3>{{this.recipe.label}}</h3>
-    <p><em>Cuisine Type:</em>
-      {{#each this.recipe.cuisineType}}
-        {{this}}
-      {{/each}}
-    </p>
-
+<div class="card recipe-card">
+  <img src="{{this.recipe.image}}" class="card-img-top" alt="food" />
+  <div class="card-body">
+    <h5 class="card-title">{{this.recipe.label}}</h5>
+    <p class="card-text">
+      <p><em>Cuisine Type:</em>
+        {{#each this.recipe.cuisineType}}
+          {{this}}
+        {{/each}}
+      </p></p>
     <p><em>Number of ingredients:</em> {{this.recipe.ingredients.length}}</p>
     <a href="/recipes-list/{{this.id}}">View Details</a>
   </div>

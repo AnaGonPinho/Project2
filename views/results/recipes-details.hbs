@@ -1,21 +1,19 @@
-<h1>Recipes details</h1>
-
-<p>{{label}}</p>
+<h1>{{label}}</h1>
 <img src="{{image}}" alt="foodImage" />
-<p>{{cuisineType}}</p>
-<p>{{source}}</p>
-<p>{{url}}</p>
-<p>{{healthLabels}}</p>
+<p>Cuisine Type: {{cuisineType}}</p>
+<p>Source: {{source}}</p>
+<a>{{url}}</a>
+<ul><li>{{healthLabels}}</li></ul>
 <p>{{ingredientLines}}</p>
 <p>{{preparation}}</p>
 
-<p>{{uri}}</p>
+{{!-- <p>{{uri}}</p> --}}
 
 <form action="/recipes-list/add-favorite" method="POST">
   <input type="text" name="uri" value="{{uri}}" hidden />
   <input type="text" name="imgUrl" value="{{image}}" hidden />
   <input type="text" name="name" value="{{label}}" hidden />
   <button type="submit" class="favorite-btn"><span
-      class="btn btn-primary"
-    ></span>Add to Favorites</button>
+      class="glyphicon glyphicon-heart"
+    ></span>🤍 Add to Favorites</button>
 </form>

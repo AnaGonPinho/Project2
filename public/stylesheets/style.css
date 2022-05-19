@@ -40,8 +40,8 @@ a {
 }
 
 body {
-  background-image: url("/images/stawberrys-home.png");
-  background-repeat: no-repeat;
+  background-image: url("/images/Strawberry\ background\ -\ 4.0.png");
+  background-repeat: repeat-y;
   background-position: 100%;
 }
 
@@ -67,3 +67,16 @@ footer {
   font-size: 10px;
   margin-top: 15px;
 }
+
+.recipes-details-section {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 50%;
+}
+
+/* .recipes-details-image{
+ margin-left: 25%;
+} */

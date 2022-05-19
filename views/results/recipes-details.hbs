@@ -1,9 +1,22 @@
+<section class="recipes-details-section">
+
 <h1>{{label}}</h1>
-<img src="{{image}}" alt="foodImage" />
-<p>Cuisine Type: {{cuisineType}}</p>
-<p>Source: {{source}}</p>
-<a>{{url}}</a>
+<br>
+<img src="{{image}}" alt="foodImage" class="recipes-details-image" />
+
+{{!-- <p>Source: {{source}}</p> --}}
+<br>
+{{!-- <a href="{{url}}">{{url}}</a> --}}
+
+
+
+        <form action="{{url}}" method="get" target="_blank">
+         <button type="submit">Preparation 🥘</button>
+      </form>
+
+<br>
 <ul><li>{{healthLabels}}</li></ul>
+<p><b>Cuisine Type:</b> {{cuisineType}}</p>
 <p>{{ingredientLines}}</p>
 <p>{{preparation}}</p>
 
@@ -17,3 +30,5 @@
       class="glyphicon glyphicon-heart"
     ></span>🤍 Add to Favorites</button>
 </form>
+
+</section>

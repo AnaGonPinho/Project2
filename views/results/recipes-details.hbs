@@ -1,14 +1,14 @@
 <div class="background-image">
 <section class="recipes-details-section">
 
-<h1 class="name-recipe-detail">{{label}}</h1>
+<h1 class="name-recipe-detail">{{recipe.label}}</h1>
 <br>
-<img src="{{image}}" alt="foodImage" class="recipes-details-image" />
+<img src="{{recipe.image}}" alt="foodImage" class="recipes-details-image" />
 
 
 <br>
 
-<form action="{{url}}" method="get" target="_blank">
+<form action="{{recipe.url}}" method="get" target="_blank">
 <button class="preparation-button" type="submit">Preparation 🥘</button>
 </form> 
 
@@ -16,19 +16,19 @@
 <br>
 <h3 class="ingredients-details">Ingredients</h3>
 <ul>
-{{#each ingredientLines}}
+{{#each recipe.ingredientLines}}
     <li>{{this}}</li>
 {{/each}}
 </ul>
 <br>
 
 
-<p><b>Cuisine Type:</b> {{cuisineType}}</p>
+<p><b>Cuisine Type:</b> {{recipe.cuisineType}}</p>
 
 <form action="/recipes-list/add-favorite" method="POST">
-  <input type="text" name="uri" value="{{uri}}" hidden />
-  <input type="text" name="imgUrl" value="{{image}}" hidden />
-  <input type="text" name="name" value="{{label}}" hidden />
+  <input type="text" name="uri" value="{{recipe.uri}}" hidden />
+  <input type="text" name="imgUrl" value="{{recipe.image}}" hidden />
+  <input type="text" name="name" value="{{recipe.label}}" hidden />
   <button type="submit" class="favorite-btn"><span
       class="glyphicon glyphicon-heart"
     ></span>❤️ Add to Favorites</button>

@@ -68,7 +68,7 @@ router.get("/profile/:recipeId/edit", (req, res, next) => {
 
   Recipe.findById(recipeId)
     .then((recipeToEdit) =>
-      res.render("user/profile-edit", { recipe: recipeToEdit })
+      res.render("user/profile-edit", { recipe: recipeToEdit, user:req.session.user })
     )
     .catch((err) => next(err));
 });

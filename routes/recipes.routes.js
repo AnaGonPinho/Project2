@@ -25,7 +25,7 @@ router.get("/recipes-list", (req, res, next) => {
         element.id = element.recipe.uri.split("recipe_")[1];
       });
       console.log(recipesList);
-      res.render("results/recipes-list", { recipesList });
+      res.render("results/recipes-list", { recipesList, user:req.session.user });
     })
     .catch((err) => console.log("Error", err));
 });
@@ -45,7 +45,7 @@ router.get("/recipes-list/:recipeId", (req, res, next) => {
         response.data.recipe
       );
       let recipe = response.data.recipe;
-      res.render("results/recipes-details", recipe);
+      res.render("results/recipes-details", {recipe, user:req.session.user});
     })
     .catch((err) => console.log("Error", err));
 });

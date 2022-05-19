@@ -150,3 +150,9 @@ footer {
 .recipes-list {
   text-align: center;
 }
+
+.container main-created {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}

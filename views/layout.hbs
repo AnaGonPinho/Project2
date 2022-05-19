@@ -48,6 +48,8 @@
                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
                   <li><a class="dropdown-item" href="/login">Login</a></li>
+                   <li><form action="/logout" method="post"> <button type="submit" class="dropdown-item">Logout</button></form></li>
+      </form> 
                  
                </ul>
             </li>
@@ -57,9 +59,7 @@
          </div>
       </div>
       </nav>
-        <form id="logout" action="/logout" method="post">
-        <button type="submit">Logout</button>
-      </form> 
+        
   {{!--   <nav>
       <button><a href="/signup" class="btn btn-primary">Sign Up</a></button>
       <button><a href="/login" class="btn btn-primary">Login</a></button>

@@ -1,6 +1,9 @@
 body {
   padding: 50px;
-  font-size: 14px; 
+  font-size: 14px;
+  background-image:url('/images/Strawberry\ background\ -\ 4.0.png') ;
+  background-repeat: repeat-y;
+  background-position: 100%; 
  
 }
 
@@ -30,8 +33,6 @@ flex-direction: column;
 .title-home{
   font-size: 60px;
   padding: 20px;
-
-
 }
 
 
@@ -48,10 +49,8 @@ flex-direction: column;
   justify-content: center;
 }
 
-body{
-  background-image:url('/images/Strawberry\ background\ -\ 4.0.png') ;
-  background-repeat: repeat-y;
-  background-position: 100%;
+.background-image{
+
 }
 
 
@@ -72,8 +71,7 @@ body{
 }
 
 footer {
-  /* background-color: #a6d1ee;
-  padding: 15px; */
+
   color: black;
   text-align: center;
   font-size: 10px;
@@ -89,6 +87,25 @@ footer {
   margin-right: 50%;
 }
 
+.name-recipe-detail{
+  display: flex;
+  text-align: center;
+}
+
+.favorite-btn{
+  background-color: white;
+  border: none;
+}
+
+.preparation-button{
+  padding: 20px;
+
+  border-radius: 15%;
+  color: black;
+  font-size: 20px;
+
+}
+
 /* .recipes-details-image{
  margin-left: 25%;
 } */
@@ -101,4 +118,39 @@ footer {
 .recipe-card {
   max-width: 300px;
   background-color: white;
+}
+
+.form-create {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  
+}
+
+.form-create label{
+  font-weight: bold;
+  display: inline-block;
+  width: 150px;
+}
+
+.form-edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.form-edit label{
+  font-weight: bold;
+  display: inline-block;
+  width: 150px;
+}
+
+.background-recipes-list{
+  background-color: white;
+ min-height: 100%;
+ min-height: 100% ;
+}
+
+.recipes-list{
+  text-align: center;
 }

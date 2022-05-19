@@ -11,7 +11,7 @@ const recipeSchema = new Schema({
     type: String,
     required: true,
     default:
-      " https://cdn.xxl.thumbs.canstockphoto.com.br/garfo-armando-lugar-faca-prato-vazio-%C3%ADcone-desenho_csp67400895.jpg",
+      " https://cdn.xxl.thumbs.canstockphoto.com.br/garfo-armando-lugar-faca-prato-vazio-%C3%ADcone-desenho_csp67400895.jphttps://www.kindpng.com/picc/m/29-299742_rice-bowl-filled-icon-vector-rice-bowl-icon.png",
   },
 
   source: {
@@ -22,9 +22,9 @@ const recipeSchema = new Schema({
     type: String,
   },
 
-  /*  yield: {
-    type: integer, 
-  }, */
+cuisineType:{
+  type: String,
+},
 
   healthLabels: {
     type: [String],

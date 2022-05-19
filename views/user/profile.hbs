@@ -1,77 +1,33 @@
 
-<H1>Welcome to your cookbook!</H1>
+<section class="Your recipes created">
+<h1 class="recipes-created">Your recipes created:</h1>
+ <div class="container main-created">
 
-
-<hr>
-
-<section id="create-recipe">
-<h5>Let's create a recipe?</h5><a href="/profile/create" class="btn btn-primary"><button type="submit">Create
+<h5>Let's create a recipe?</h5>
+<a href="/profile/create" class="btn btn-primary"><button type="submit">Create
     recipe</button></a>
-
-
-<section id="my-created-recipes"
-{{#each user.createdRecipes}}
-  <p>{{user.label}}</p>
-  <img src="{{image}}" width="300px" height="300px"alt="foodImage" />
-  <p>{{user.healthLabels}}</p>
-  <p>{{user.ingredientLines.length}}</p>
-  <p>{{user.cuisineType}}</p>
-  <p>{{preparation}}</p>
-   {{!-- add the form to handle the POST request to remove a specific book  --}}
-      <a href="/profile/{{_id}}/edit"><button>Edit</button></a>
-  
-    <form action="/profile/{{_id}}/remove-created" method="POST">
-      <button type="submit">Delete</button>
-    </form>
-  </div>
-{{/each}}
-</section>
-
-
-<section id="favourite-recipes">
-  <h5>Here are your favourite recipes</h5>
-
-{{#each user.favoriteRecipes}}
-  <p>{{name}}</p>
-  <img src="{{imgUrl}}" width="300px" height="300px" alt="foodImage" />
-  <a href="/recipes-list/{{uri}}">{{name}}</a>
-   
-  
-   <form action="/profile/{{_id}}/remove-favorite" method="POST">
-      <button type="submit">Delete</button>
-    </form>
-  </div>
-{{/each}}
-
-</section>
-
-
-{{!-- 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3 col-sm">
-      <div class="sticky-items">
-     
-            <label for="ingredientsLine">Ingredients</label>
-            <input type="text" name="name" class="form-control" id="ingredientsLine">
-        </div>
-       
-       
-     
-       
-        </div>
-    </div>
-    <div class="col-lg-9 col-sm">
-      <div class="container">
-        <div class="row gy-5">
+</div>
+    
+      <div class="recipe-listing">
           {{#each user.createdRecipes}}
-          <div class="col-sm col-lg-4">
-            {{> profilecard this}}
-          </div>
+            {{> createdcard this}}
           {{/each}}
-        </div>
       </div>
-    </div>
-  </div>
-  </div>
- --}}
+   
+</section>
+
+
+<section class="Your favourite recipes ">
+<h1 class="recipes-fav">Your favourite recipes:</h1>
+ <div class="container main-created">
+<h5>Your favourite recipes</h5>
+</div>
+        <div class="recipe-listing">
+          {{#each user.favoriteRecipes}}
+            {{> favcard this}}
+          {{/each}}
+      </div>
+    
+ 
+</section>
+

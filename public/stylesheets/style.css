@@ -1,15 +1,14 @@
 body {
   padding: 50px;
-  font-size: 14px; 
- 
+  font-size: 14px;
 }
 
-main{ 
+main {
   min-height: 70vh;
 }
 
-*{
-  font-family: 'Quicksand', sans-serif;
+* {
+  font-family: "Quicksand", sans-serif;
 }
 a {
   color: #00b7ff;
@@ -19,56 +18,49 @@ a {
   color: 15px;
 } */
 
-
-.titleandsearch{
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+.titleandsearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.title-home{
+.title-home {
   font-size: 60px;
   padding: 20px;
-
-
 }
 
-
-.description-home{
+.description-home {
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
-.homepage-view{
+.homepage-view {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-body{
-  background-image:url('/images/Strawberry\ background\ -\ 4.0.png') ;
+body {
+  background-image: url("/images/Strawberry\ background\ -\ 4.0.png");
   background-repeat: repeat-y;
   background-position: 100%;
 }
 
-
-#search-bar{
-  padding: 15px; 
+#search-bar {
+  padding: 15px;
   width: 500px;
 }
 
-.button-home{
-
+.button-home {
   background-color: rgb(201, 72, 72);
   padding: 17px;
   color: antiquewhite;
-  border-color:  rgb(201, 72, 72) ;
+  border-color: rgb(201, 72, 72);
   font-size: 15px;
-  border-radius: 5% ;
-
+  border-radius: 5%;
 }
 
 footer {
@@ -80,12 +72,12 @@ footer {
   margin-top: 15px;
 }
 
-.recipes-details-section{
+.recipes-details-section {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
- flex-direction: column;
+  flex-direction: column;
   margin-right: 50%;
 }
 
@@ -101,4 +93,13 @@ footer {
 .recipe-card {
   max-width: 300px;
   background-color: white;
+}
+.recipe-card img {
+  min-height: 250px;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: center;
+  gap: 1rem;
 }

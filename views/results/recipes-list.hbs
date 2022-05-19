@@ -2,22 +2,17 @@
 <h1>Recipes</h1>
 
  <div class="container main-recipes">
-  <div class="row">
-    <div class="col">
+ 
       <div class="sticky-items">
-      <form action='/recipes-list' method='POST' class="search-listing-form">
-        <div class="form-group">
-            <label for="ingredientsLine">Ingredients</label>
-            <input type="text" name="name" class="form-control" id="ingredientsLine">
-        </div>
+      <form action="/recipes-list" method="get">
+  <input type="text" name="ingredients" id="search-bar" placeholder="Ex: carrots, eggplants" />
+  <button class="button-home" type="submit">Go</button>
+
+</form>
        
        
-        <button type="submit" class="btn btn-primary btn-block">Search</button>
-        </form>
-       
-        </div>
     </div>
-    <div class="col-9">
+    
       <div class="recipe-listing">
           {{#each recipesList}}
             {{> recipescard this}}
